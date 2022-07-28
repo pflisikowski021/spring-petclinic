@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage("PreCommit") {
             steps {
-                sh "mvn clean compile"
-                sh "mvn test"
+                sh "./mvnw clean compile"
+                sh "./mvnw test"
             }
         }
         stage("Build") {
@@ -13,7 +13,7 @@ pipeline {
                 branch "dev"
             }
             steps {
-                sh "mvn clean package"
+                sh "./mvnw clean package"
             }
         }
     }
