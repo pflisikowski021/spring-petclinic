@@ -14,6 +14,7 @@ pipeline {
             }
             steps {
                 sh "./mvnw clean package"
+                sh "./mvnw deploy"
             }
         }
     }
