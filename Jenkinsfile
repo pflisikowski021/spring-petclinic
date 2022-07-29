@@ -15,6 +15,7 @@ pipeline {
             steps {
                 sh "./mvnw clean package"
                 sh "./mvnw deploy"
+                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value:'test')], wait: false
             }
         }
     }
