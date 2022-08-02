@@ -24,7 +24,7 @@ pipeline {
                     version = sh(returnStdout: true, script: './mvnw help:evaluate -Dexpression=project.version -q -DforceStdout')
                 }
 
-                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: '${version}')], wait: false
+                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: version')], wait: false
             }
         }
     }
