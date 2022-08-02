@@ -19,7 +19,12 @@ pipeline {
             steps {
                 sh "./mvnw clean package"
                 sh "./mvnw deploy"
-                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value:'test')], wait: false
+
+                script {
+                    version = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
+                }
+
+                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: ${version})], wait: false
             }
         }
     }
