@@ -22,7 +22,13 @@ pipeline {
 
                 script {
                     version = sh(returnStdout: true, script: './mvnw help:evaluate -Dexpression=project.version -q -DforceStdout')
+                    ipaddr = sh(returnStdout: true, script: 'ifconfig utun3 | awk '$1 == "inet" {print $2}'')
                 }
+
+                sh "docker build -t capstone-petclinic ."
+                sh "docker tag capstone-petclinic:${version} ${ipaddr}:9002/capstone-petclinic:${version}"
+                sh "docker push ${ipaddr}:9002/capstone-petclinic:${version}"
+
 
                 build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: version)], wait: false
             }
