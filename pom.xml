@@ -261,7 +261,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>libs/</classpathPrefix>
-              <mainClass>com.testmaven.app.HelloWorld</mainClass>
+              <mainClass>org.springframework.samples.petclinic.PetClinicApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
