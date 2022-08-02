@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: "100"))
+    }
+
     stages {
         stage("PreCommit") {
             steps {
