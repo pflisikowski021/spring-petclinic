@@ -26,7 +26,7 @@ pipeline {
                 }
 
                 sh "docker build -t capstone-petclinic ."
-                sh "docker tag capstone-petclinic:${version} ${ipaddr}:9002/capstone-petclinic:${version}"
+                sh "docker tag capstone-petclinic ${ipaddr}:9002/capstone-petclinic:${version}"
                 sh "docker push ${ipaddr}:9002/capstone-petclinic:${version}"
 
 
