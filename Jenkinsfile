@@ -21,7 +21,7 @@ pipeline {
                 sh "./mvnw deploy"
 
                 script {
-                    version = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
+                    version = sh(returnStdout: true, script: './mvnw help:evaluate -Dexpression=project.version -q -DforceStdout')
                 }
 
                 build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: ${version})], wait: false
