@@ -32,7 +32,7 @@ pipeline {
                 sh "docker push ${ipaddr}:9002/capstone-petclinic:${version}"
 
 
-                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: version)], wait: false
+                build job: 'capstone-deploy', parameters: [string(name: 'artifactVersion', value: version), string(name: 'ipaddr', value: ipaddr)], wait: false
             }
         }
     }
