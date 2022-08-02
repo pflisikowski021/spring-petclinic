@@ -22,7 +22,9 @@ pipeline {
 
                 script {
                     version = sh(returnStdout: true, script: './mvnw help:evaluate -Dexpression=project.version -q -DforceStdout')
+                    version = version.trim()
                     ipaddr = sh(returnStdout: true, script: 'ifconfig utun3 | awk \'$1 == "inet" {print $2}\'')
+                    ipaddr = ipaddr.trim()
                 }
 
                 sh "docker build -t capstone-petclinic ."
