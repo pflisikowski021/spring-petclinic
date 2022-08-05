@@ -27,7 +27,7 @@ pipeline {
                     ipaddr = ipaddr.trim()
                 }
 
-                sh "docker build -t capstone-petclinic ."
+                sh "docker build --build-arg PROJECT_VERSION=${version} -t capstone-petclinic ."
                 sh "docker tag capstone-petclinic ${ipaddr}:9002/capstone-petclinic:${version}"
                 sh "docker push ${ipaddr}:9002/capstone-petclinic:${version}"
 
