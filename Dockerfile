@@ -6,6 +6,6 @@ RUN mvn clean package
 
 FROM arm64v8/openjdk:11-jdk
 ARG PROJECT_VERSION
-COPY --from=builder /usr/app/target/spring-petclinic-${PROJECT_VERSION}}.jar petclinic.jar
+COPY --from=builder /usr/app/target/spring-petclinic-${PROJECT_VERSION}.jar petclinic.jar
 EXPOSE 80
 ENTRYPOINT ["java","-jar","petclinic.jar"]
